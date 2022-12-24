@@ -6,7 +6,6 @@
 }
 .towers{
   border-bottom: 10px solid tan;
-  width: 600px;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -22,6 +21,7 @@
   flex-direction: column;
   gap: 2px;
   align-items: center;
+  padding-bottom: 0;
 }
 .tower::before{
   display: block;
@@ -48,4 +48,17 @@
 }
 h1{
   text-align: center;
+  position: relative;
+  z-index: 100;
+}
+.winner{
+  position: absolute;
+  left:0;
+  right: 0;
+  font-size: 1rem;
+  padding: 1rem 2em;
+  border-radius:1em;
+  top:100%;
+  background: tomato;
+  color:white;
 }
