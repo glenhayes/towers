@@ -16,7 +16,7 @@
   position:relative;
   justify-content: end;
   height: 120px;
-  width: 100px;
+  width: 115px;
   display:flex;
   flex-direction: column;
   gap: 2px;
@@ -60,5 +60,4 @@ h1{
   border-radius:1em;
   top:100%;
   background: tomato;
-  color:white;
 }

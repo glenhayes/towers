@@ -13,8 +13,9 @@ const COLORS = [
   'olive',
   'darkcyan',
   'coral',
+  'aquamarine',
 ];
-const discs: Disc[] = [...Array(5).keys()].map((index) => index + 1);
+const discs: Disc[] = [...Array(7).keys()].map((index) => index + 1);
 function App() {
   const [towers, setTowers] = useState([discs, [], []]);
   const [isVictory, setIsVictory] = useState(false);
