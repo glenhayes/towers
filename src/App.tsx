@@ -15,6 +15,7 @@ const COLORS = [
   'coral',
   'aquamarine',
 ];
+// TODO: add short / medium / long as play options
 const discs: Disc[] = [...Array(7).keys()].map((index) => index + 1);
 function App() {
   const [towers, setTowers] = useState([discs, [], []]);
