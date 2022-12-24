@@ -1,0 +1,51 @@
+.App{
+  text-align: center;
+  display: grid;
+  place-content: center;
+  height: 100dvh;  
+}
+.towers{
+  border-bottom: 10px solid tan;
+  width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap:10px;
+  padding-top: 10px;
+}
+.tower{
+  position:relative;
+  justify-content: end;
+  height: 120px;
+  width: 100px;
+  display:flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+.tower::before{
+  display: block;
+  content:"";
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 10px;
+  border-radius: 5px 5px 0 0 ;
+  background:thistle; 
+}
+.disc{
+  border-radius: 5px;
+  height: 10px;
+  position: relative;
+}
+
+.activeDisk{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  height: 20px;
+}
+h1{
+  text-align: center;
+}
