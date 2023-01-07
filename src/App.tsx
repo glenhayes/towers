@@ -1,84 +1,11 @@
-import { useEffect, useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
-
+import useTowers from './hooks/useTowers';
+import { COLORS } from './lib/colors';
 import './App.css';
 
-type Disc = number;
-
-const COLORS = [
-  'tomato',
-  'blanchedalmond',
-  'blueviolet',
-  'goldenrod',
-  'olive',
-  'darkcyan',
-  'coral',
-  'aquamarine',
-];
-// TODO: add short / medium / long as play options
-const discs: Disc[] = [...Array(7).keys()].map((index) => index + 1);
 function App() {
-  const [towers, setTowers] = useState([discs, [], []]);
-  const [isVictory, setIsVictory] = useState(false);
-  const [activeDisc, setActiveDisk] = useState<number | null>();
-
-  const checkIfWin = () => {
-    const [_tower1, ...winningTowers] = towers;
-    if (
-      isVictory &&
-      !winningTowers.find((wTower) => wTower.length === discs.length)
-    ) {
-      setIsVictory(false);
-    }
-
-    if (!isVictory) {
-      if (winningTowers.find((wTower) => wTower.length === discs.length)) {
-        setIsVictory(true);
-      }
-    }
-  };
-
-  const removeDisc = (disc: Disc, towerIndex: number) => {
-    setActiveDisk(disc);
-    setTowers((prevTowers) => {
-      return prevTowers.map((prevTower, index) => {
-        if (towerIndex === index) {
-          return prevTower.filter((prevDisc) => prevDisc !== disc);
-        }
-        return prevTower;
-      });
-    });
-  };
-
-  const addDisc = (disc: Disc, towerIndex: number) => {
-    setActiveDisk(null);
-    const updatedTowers = [...towers].map((prevTower, index) => {
-      if (towerIndex === index) {
-        prevTower.unshift(disc);
-        return prevTower;
-      }
-      return prevTower;
-    });
-    setTowers(updatedTowers);
-  };
-
-  const moveRing = (towerIndex: number) => {
-    setIsVictory(false);
-    const selectedTower = towers[towerIndex];
-    const [topDisc] = selectedTower;
-
-    if (!activeDisc) {
-      if (!isNaN(topDisc)) removeDisc(topDisc, towerIndex);
-      return;
-    }
-
-    if (activeDisc) {
-      if (!topDisc || topDisc > activeDisc) addDisc(activeDisc, towerIndex);
-      checkIfWin();
-      return;
-    }
-  };
-
+  const { towers, isVictory, moveRing, activeDisc, resetGame, move } =
+    useTowers();
   return (
     <div className='App'>
       <h1>
@@ -86,6 +13,7 @@ function App() {
         Towers{' '}
       </h1>
 
+      <span className='counter'>Move {move}</span>
       <div className='activeDisk'>
         {activeDisc && (
           <div
@@ -124,6 +52,9 @@ function App() {
           </button>
         ))}
       </div>
+      <button onClick={() => resetGame()} className='btn-reset'>
+        Reset Game
+      </button>
     </div>
   );
 }

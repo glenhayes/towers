@@ -61,3 +61,23 @@ h1{
   top:100%;
   background: tomato;
 }
+
+.btn-reset{
+  position:absolute;
+  right:1em;
+  top:1em;
+  font-size: small;
+  background-color: indianred;
+}
+
+.counter{
+  position:absolute;
+  left:1em;
+  top:1em;
+  font-size: small;
+  border: .05em solid gray;
+  padding: .25em .5em;
+  font-weight: 700;
+  border-radius: .25em;
+
+}
